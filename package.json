@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "vue": "^2.1.0",
-    "vue-morris": "0.0.3"
+    "vue-morris": "^0.0.4"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
