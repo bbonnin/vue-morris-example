@@ -118,7 +118,7 @@
                 id="area" :data="areaData" xkey="year" ykeys='[ "a", "b" ]' resize="true"
                 labels='[ "Serie A", "Serie B" ]' line-colors='[ "#FF6384", "#36A2EB" ]'
                 grid="true" grid-text-weight="bold">
-              </line-chart>
+              </area-chart>
             </div>
             <div class="col-sm-6">
               <pre style="border:none; background-color:white">
@@ -133,17 +133,49 @@
       ]'
     xkey="year"
     ykeys='[ "a", "b" ]'
+    labels='[ "Serie A", "Serie B" ]'
     line-colors='[ "#FF6384", "#36A2EB" ]' 
     grid="true"
     grid-text-weight="bold"
     resize="true"&gt;
-  &lt;/line-chart&gt;
+  &lt;/area-chart&gt;
                 </code>
               </pre>
             </div>
           </div>
         </div>
-        
+
+        <div class="col-xs-12 panel panel-default">
+          <div class="panel-body">
+            <div class="col-sm-6">
+              <h3>Area Chart <small>Example with the default value for xkey, ykeys and labels</small></h3>
+              <area-chart 
+                id="area_2" :data="areaData" resize="true" line-colors='[ "#FF6384", "#36A2EB" ]'
+                grid="true" grid-text-weight="bold">
+              </area-chart>
+            </div>
+            <div class="col-sm-6">
+              <pre style="border:none; background-color:white">
+                <code class="xml">
+  &lt;area-chart 
+    id="area"
+    data='[
+        { key: "2013", value: 30 },
+        { key: "2014", value: 25 },
+        { key: "2015", value: 29 },
+        { key: "2016", value: 50 }
+      ]'
+    line-colors='[ "#FF6384", "#36A2EB" ]' 
+    grid="true"
+    grid-text-weight="bold"
+    resize="true"&gt;
+  &lt;/area-chart&gt;
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+    
       </div>
     </div>
   </div>
