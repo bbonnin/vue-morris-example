@@ -117,7 +117,7 @@
               <area-chart 
                 id="area" :data="areaData" xkey="year" ykeys='[ "a", "b" ]' resize="true"
                 labels='[ "Serie A", "Serie B" ]' line-colors='[ "#FF6384", "#36A2EB" ]'
-                grid="true" grid-text-weight="bold">
+                grid="true" grid-text-weight="bold" hide-hover="always">
               </area-chart>
             </div>
             <div class="col-sm-6">
@@ -137,7 +137,8 @@
     line-colors='[ "#FF6384", "#36A2EB" ]' 
     grid="true"
     grid-text-weight="bold"
-    resize="true"&gt;
+    resize="true"
+    hide-hover="always"&gt;
   &lt;/area-chart&gt;
                 </code>
               </pre>
