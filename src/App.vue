@@ -1,5 +1,4 @@
 <template>
-  hello
   <div id="app">
     <div class="container">
       <div class="page-header">
