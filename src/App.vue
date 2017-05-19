@@ -56,12 +56,7 @@
                 <code class="xml">
   &lt;line-chart 
     id="line"
-    data='[
-        { year: "2013", a: 10, b: 5 },
-        { year: "2014", a: 40, b: 15 },
-        { year: "2015", a: 20, b: 25 },
-        { year: "2016", a: 30, b: 20 },
-      ]'
+    :data="lineData"
     xkey="year"
     ykeys='[ "a", "b" ]'
     line-colors='[ "#FF6384", "#36A2EB" ]' 
@@ -210,12 +205,12 @@ export default {
         { year: '2016', and: 30, ios: 20, win: 1 },
       ],
 
-      lineData: [
+      lineData: [],/*[
         { year: '2013', a: 10, b: 5 },
         { year: '2014', a: 40, b: 15 },
         { year: '2015', a: 20, b: 25 },
         { year: '2016', a: 30, b: 20 },
-      ],
+      ],*/
 
       areaData: [
         { year: '2013', a: 30, b: 5 },
