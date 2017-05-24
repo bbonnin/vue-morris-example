@@ -45,11 +45,14 @@
           <div class="panel-body">
             <div class="col-sm-6">
               <h3>Line Chart <small>(with values modified every 5 seconds)</small></h3>
-              <line-chart 
-                id="line" :data="lineData" xkey="year" ykeys='[ "a", "b" ]' resize="true"
-                labels='[ "Serie A", "Serie B" ]' line-colors='[ "#FF6384", "#36A2EB" ]'
-                grid="true" grid-text-weight="bold">
-              </line-chart>
+              <div v-if="lineData.length != 0">
+                <line-chart
+                  id="line" :data="lineData" xkey="year" ykeys='[ "a", "b" ]' resize="true"
+                  labels='[ "Serie A", "Serie B" ]' line-colors='[ "#FF6384", "#36A2EB" ]'
+                  grid="true" grid-text-weight="bold">
+                </line-chart>
+              </div>
+              <div v-else>No Data</div>
             </div>
             <div class="col-sm-6">
               <pre style="border:none; background-color:white">
