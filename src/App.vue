@@ -13,7 +13,8 @@
               <h3>Bar Chart</h3>
               <bar-chart 
                 id="bar" :data="barData" xkey="year" ykeys='[ "and", "ios", "win" ]' resize="true"
-                labels='[ "Android", "iOS", "Windows" ]' bar-colors='[ "#FF6384", "#36A2EB", "#FFCE56" ]'
+                labels='[ "Android", "iOS", "Windows" ]' bar-colorssss='[ "#FF6384", "#36A2EB", "#FFCE56" ]'
+                :bar-colors="osColors"
                 grid="true" grid-text-weight="bold">
               </bar-chart>
             </div>
@@ -242,6 +243,11 @@ export default {
   methods: {
     rand (limit) {
       return Math.round(Math.random() * limit)
+    },
+
+    osColors () {
+      console.log('osColors')
+      return []
     }
   }
 
