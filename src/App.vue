@@ -180,6 +180,33 @@
             </div>
           </div>
         </div>
+
+        <div class="col-xs-12 panel panel-default">
+          <div class="panel-body">
+            <div class="col-sm-6">
+              <h3>Line Chart <small>Example for issue #24</small></h3>
+              <line-chart 
+                id="chart_issue_24"
+                :data="issue24Data"
+                xkey="date"
+                resize="true"
+                :ymin="prettyFloorMinFollowers"
+                :ymax="prettyCeilMaxFollowers"
+                ykeys='["followers"]'
+                labels='["Followers"]'
+                line-colors='["#576277", "#303641"]'
+                hide-hover="auto"
+              >
+              </line-chart>
+            </div>
+            <div class="col-sm-6">
+              <pre style="border:none; background-color:white">
+                <code class="xml">
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
     
       </div>
     </div>
@@ -221,7 +248,48 @@ export default {
         { year: '2014', a: 25, b: 15 },
         { year: '2015', a: 29, b: 25 },
         { year: '2016', a: 50, b: 20 },
-      ]
+      ],
+
+      issue24Data: [{
+        "id": 8853,
+        "company_id": 58,
+        "location_id": null,
+        "followers": 203,
+        "date": "2019-08-04",
+        "created_at": null,
+        "updated_at": null,
+        "deleted_at": null
+      },
+      {
+        "id": 8829,
+        "company_id": 58,
+        "location_id": null,
+        "followers": 203,
+        "date": "2019-08-03",
+        "created_at": null,
+        "updated_at": null,
+        "deleted_at": null
+      },
+      {
+        "id": 8805,
+        "company_id": 58,
+        "location_id": null,
+        "followers": 202,
+        "date": "2019-08-02",
+        "created_at": null,
+        "updated_at": null,
+        "deleted_at": null
+      },
+      {
+        "id": 8777,
+        "company_id": 58,
+        "location_id": null,
+        "followers": 200,
+        "date": "2019-08-01",
+        "created_at": null,
+        "updated_at": null,
+        "deleted_at": null
+      }]
     }
   },
 
@@ -240,6 +308,20 @@ export default {
     }, 5000)
   },
 
+  computed: {
+    prettyFloorMinFollowers() {
+      return this.prettyFloor(this.yMinMax['min']['followers'])
+    },
+
+    prettyCeilMaxFollowers() {
+      return this.prettyCeil(this.yMinMax['max']['followers'])
+    },
+
+    yMinMax() {
+      return this.minMax(this.issue24Data, 'followers')
+    }
+  },
+
   methods: {
     rand (limit) {
       return Math.round(Math.random() * limit)
@@ -248,6 +330,55 @@ export default {
     osColors () {
       console.log('osColors')
       return []
+    },
+
+    minMax(objects, field) {
+      var result = {};
+      return objects.reduce(function(valorAnterior, valorActual, indice, vector) {
+        if (indice == 1) {
+          result['min'] = valorAnterior;
+          result['max'] = valorAnterior;
+        }
+
+        valorActual[field] < result['min'][field] ? result['min'] = valorActual : '';
+        valorActual[field] > result['max'][field] ? result['max'] = valorActual : '';
+
+        return result;
+      });
+    },
+
+    prettyFloor(number) {
+      var l = Math.floor(Math.log10(Math.abs(number), 10)) - 1;
+
+      if (l <= 0) {
+        l++;
+      }
+
+      number = number / (Math.pow(10, l));
+      number = Math.floor(number);
+
+      if (l > 0) {
+        number = number * (Math.pow(10, l));
+      }
+
+      return number;
+    },
+
+    prettyCeil(number) {
+      var l = Math.floor(Math.log10(Math.abs(number), 10)) - 1;
+
+      if (l <= 0) {
+        l++;
+      }
+
+      number = number / (Math.pow(10, l));
+      number = Math.ceil(number);
+
+      if (l > 0) {
+        number = number * (Math.pow(10, l));
+      }
+
+      return number;
     }
   }
 
